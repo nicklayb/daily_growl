@@ -1,13 +1,6 @@
 defmodule CaltarWeb.Main.Live do
   use CaltarWeb, :live_view
 
-  def render(assigns) do
-    ~H"""
-    Current temperature: {@temperature}°F
-    <button phx-click="inc_temperature">+</button>
-    """
-  end
-
   def mount(_params, _session, socket) do
     # Let's assume a fixed temperature for now
     temperature = 70
@@ -18,4 +11,3 @@ defmodule CaltarWeb.Main.Live do
     {:noreply, update(socket, :temperature, &(&1 + 1))}
   end
 end
-
