@@ -64,8 +64,8 @@ defmodule CaltarWeb do
 
   def view_helpers do
     quote do
-      import CaltarWeb.Gettext
-      alias CaltarWeb.Html
+      use CaltarWeb.Gettext
+      alias Box.Html
       unquote(verified_routes())
     end
   end
