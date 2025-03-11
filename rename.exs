@@ -9,6 +9,7 @@ defmodule Rename do
   end
 
   defp rename_caltar({from, to},{:file, file}, acc) do
+    replace_content(file, {from, to})
     new_name = String.replace(file, from, to)
     :ok = File.rename(file, new_name)
     [new_name | acc]
@@ -24,6 +25,24 @@ defmodule Rename do
     else
       :continue
     end
+  end
+
+  defp replace_content(file, {from, to}) do
+    camelized_from = Macro.camelize(from)
+    camelized_to = Macro.camelize(to)
+    patterns = %{
+      ":#{from}_web" => ":#{to}_web",
+      ":#{from}" => ":#{to}",
+      from => to,
+      camelized_from <> "Web" => camelized_to <> "Web",
+      camelized_from => camelized_to
+    }
+
+    content = File.read!(file)
+    new_content = Enum.reduce(patterns, content, fn {old, new}, acc ->
+      String.replace(acc, old, new)
+    end)
+    File.write!(file, new_content)
   end
 
   def walk_files(folder, acc, function, options \\ [])
