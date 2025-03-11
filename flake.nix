@@ -18,6 +18,7 @@
               erlang_26
               direnv
               inotify-tools
+              just
             ];
 
             shellHook = ''
