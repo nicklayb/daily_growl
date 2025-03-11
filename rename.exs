@@ -2,6 +2,30 @@ defmodule Rename do
   @match ~r/.*(\.exs|\.ex|\.heex)$/
   @ignore ~r/\.git/
 
+  @default "caltar"
+
+  def rename(to, from \\ @default) do
+    walk_files("./", [], &rename_caltar({from, to}, &1, &2))
+  end
+
+  defp rename_caltar({from, to},{:file, file}, acc) do
+    new_name = String.replace(file, from, to)
+    :ok = File.rename(file, new_name)
+    [new_name | acc]
+  end
+
+  defp rename_caltar({from, to}, {:dir, dir}, _) do
+    new_name = String.replace(dir, from, to)
+
+    :ok = File.rename(dir, new_name)
+
+    if new_name != dir do
+      {:rename, new_name}
+    else
+      :continue
+    end
+  end
+
   def walk_files(folder, acc, function, options \\ [])
 
   def walk_files("/" <> _ = folder, acc, function, options) do
