@@ -27,7 +27,7 @@ defmodule Caltar.MixProject do
   defp deps do
     [
       {:bandit, "~> 1.5"},
-      {:box, git: "https://github.com/nicklayb/box_ex.git", tag: "0.13.2"},
+      {:box, git: "https://github.com/nicklayb/box_ex.git", tag: "0.14.0"},
       {:credo, "~> 1.7.11", runtime: false, only: ~w(dev test)a},
       {:ecto_sql, "~> 3.10"},
       {:ecto_sqlite3, ">= 0.0.0"},
