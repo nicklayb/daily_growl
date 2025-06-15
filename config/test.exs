@@ -1,8 +1,8 @@
 import Config
 
-config :caltar, Caltar.Repo, pool: Ecto.Adapters.SQL.Sandbox
+config :daily_growl, DailyGrowl.Repo, pool: Ecto.Adapters.SQL.Sandbox
 
-config :caltar, CaltarWeb.Endpoint, server: false
+config :daily_growl, DailyGrowlWeb.Endpoint, server: false
 
 config :logger, level: :warning
 

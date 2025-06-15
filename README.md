@@ -1,4 +1,4 @@
-# Caltar
+# DailyGrowl
 
 To start your Phoenix server:
 

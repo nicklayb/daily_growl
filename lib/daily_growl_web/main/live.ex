@@ -1,5 +1,5 @@
-defmodule CaltarWeb.Main.Live do
-  use CaltarWeb, :live_view
+defmodule DailyGrowlWeb.Main.Live do
+  use DailyGrowlWeb, :live_view
 
   def mount(_params, _session, socket) do
     # Let's assume a fixed temperature for now

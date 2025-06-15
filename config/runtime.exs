@@ -1,19 +1,22 @@
 import Config
 
-config :caltar, release_name: Box.Config.get("RELEASE_NAME")
+config :daily_growl, release_name: Box.Config.get("RELEASE_NAME")
 
-config :caltar, Caltar.Repo,
-  database:
-    Box.Config.get!("DATABASE_PATH",
-      test: Path.expand("repo/database/caltar_test.db", :code.priv_dir(:caltar)),
-      dev: Path.expand("repo/database/caltar_dev.db", :code.priv_dir(:caltar))
-    ),
-  pool_size: Box.Config.int("POOL_SIZE", default: "5")
+db_hostname = Box.Config.get("DB_HOST", default: "localhost")
+db_name = Box.Config.get("DB_NAME", default: "daily_growl", test: "daily_growl_test")
+db_user = Box.Config.get("DB_USER", default: "postgres")
+db_pass = Box.Config.get("DB_PASS", default: "postgres")
+
+config :daily_growl, DailyGrowl.Repo,
+  hostname: db_hostname,
+  database: db_name,
+  username: db_user,
+  password: db_pass
 
 app_host = Box.Config.uri("APP_HOST", default: "http://localhost:4000")
 port = Box.Config.int("PORT", default: "4000")
 
-config :caltar, CaltarWeb.Endpoint,
+config :daily_growl, DailyGrowlWeb.Endpoint,
   http: [port: port],
   url: [host: app_host.host, scheme: app_host.scheme, port: app_host.port],
   secret_key_base: Box.Config.get!("SECRET_KEY_BASE"),

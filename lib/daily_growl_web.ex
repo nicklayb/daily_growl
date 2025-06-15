@@ -1,4 +1,4 @@
-defmodule CaltarWeb do
+defmodule DailyGrowlWeb do
   def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
 
   def router do
@@ -20,9 +20,9 @@ defmodule CaltarWeb do
     quote do
       use Phoenix.Controller,
         formats: [:html, :json],
-        layouts: [html: CaltarWeb.Layouts]
+        layouts: [html: DailyGrowlWeb.Layouts]
 
-      use Gettext, backend: CaltarWeb.Gettext
+      use Gettext, backend: DailyGrowlWeb.Gettext
 
       import Plug.Conn
 
@@ -33,9 +33,9 @@ defmodule CaltarWeb do
   def verified_routes do
     quote do
       use Phoenix.VerifiedRoutes,
-        endpoint: CaltarWeb.Endpoint,
-        router: CaltarWeb.Router,
-        statics: CaltarWeb.static_paths()
+        endpoint: DailyGrowlWeb.Endpoint,
+        router: DailyGrowlWeb.Router,
+        statics: DailyGrowlWeb.static_paths()
     end
   end
 
@@ -64,7 +64,7 @@ defmodule CaltarWeb do
 
   def view_helpers do
     quote do
-      use CaltarWeb.Gettext
+      use DailyGrowlWeb.Gettext
       alias Box.Html
       unquote(verified_routes())
     end

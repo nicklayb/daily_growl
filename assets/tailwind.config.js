@@ -5,8 +5,8 @@ const path = require("path")
 module.exports = {
   content: [
     "./js/**/*.js",
-    "../lib/caltar_web.ex",
-    "../lib/caltar_web/**/*.*ex"
+    "../lib/daily_growl_web.ex",
+    "../lib/daily_growl_web/**/*.*ex"
   ],
   plugins: [
     require("@tailwindcss/forms"),

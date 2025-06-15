@@ -1,5 +1,5 @@
-defmodule CaltarWeb.Components.Layouts do
-  use CaltarWeb, :component
+defmodule DailyGrowlWeb.Components.Layouts do
+  use DailyGrowlWeb, :component
 
   embed_templates("layouts/*")
 

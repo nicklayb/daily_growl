@@ -1,5 +1,5 @@
-defmodule CaltarWeb.Router do
-  use CaltarWeb, :router
+defmodule DailyGrowlWeb.Router do
+  use DailyGrowlWeb, :router
 
   import Phoenix.LiveView.Router
 
@@ -7,13 +7,13 @@ defmodule CaltarWeb.Router do
     plug(:accepts, ["html"])
     plug(:fetch_session)
     plug(:fetch_live_flash)
-    plug(:put_root_layout, {CaltarWeb.Components.Layouts, :root})
-    plug(:put_layout, {CaltarWeb.Components.Layouts, :app})
+    plug(:put_root_layout, {DailyGrowlWeb.Components.Layouts, :root})
+    plug(:put_layout, {DailyGrowlWeb.Components.Layouts, :app})
     plug(:protect_from_forgery)
     plug(:put_secure_browser_headers)
   end
 
-  scope("/", CaltarWeb) do
+  scope("/", DailyGrowlWeb) do
     pipe_through([:browser])
     live("/", Main.Live)
   end

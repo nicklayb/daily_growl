@@ -1,4 +1,4 @@
-defmodule CaltarWeb.Html do
+defmodule DailyGrowlWeb.Html do
   def class(initial \\ "", classes)
 
   def class(initial, classes) when is_list(classes) do

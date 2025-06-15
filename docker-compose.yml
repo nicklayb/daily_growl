@@ -1,0 +1,14 @@
+version: '3.6'
+services:
+  db:
+    image: postgres:16
+    volumes:
+      - db:/var/lib/postgresql/data
+    ports:
+      - "${DB_PORT-5432}:5432"
+    environment:
+      - POSTGRES_DB=daily_growl
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+volumes:
+  db:

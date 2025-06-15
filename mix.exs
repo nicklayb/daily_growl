@@ -1,9 +1,9 @@
-defmodule Caltar.MixProject do
+defmodule DailyGrowl.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :caltar,
+      app: :daily_growl,
       version: "0.1.0",
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -15,7 +15,7 @@ defmodule Caltar.MixProject do
 
   def application do
     [
-      mod: {Caltar.Application, []},
+      mod: {DailyGrowl.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -30,7 +30,7 @@ defmodule Caltar.MixProject do
       {:box, git: "https://github.com/nicklayb/box_ex.git", tag: "0.14.0"},
       {:credo, "~> 1.7.11", runtime: false, only: ~w(dev test)a},
       {:ecto_sql, "~> 3.10"},
-      {:ecto_sqlite3, ">= 0.0.0"},
+      {:postgrex, ">= 0.0.0"},
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
       {:gettext, "~> 0.26"},
       {:jason, "~> 1.2"},
@@ -49,10 +49,10 @@ defmodule Caltar.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind caltar", "esbuild caltar"],
+      "assets.build": ["tailwind daily_growl", "esbuild daily_growl"],
       "assets.deploy": [
-        "tailwind caltar --minify",
-        "esbuild caltar --minify",
+        "tailwind daily_growl --minify",
+        "esbuild daily_growl --minify",
         "phx.digest"
       ],
       gettext: [

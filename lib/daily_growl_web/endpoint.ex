@@ -1,9 +1,9 @@
-defmodule CaltarWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :caltar
+defmodule DailyGrowlWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :daily_growl
 
   @session_options [
     store: :cookie,
-    key: "_caltar_key",
+    key: "_daily_growl_key",
     signing_salt: "gVj9BRSm",
     same_site: "Lax"
   ]
@@ -13,13 +13,13 @@ defmodule CaltarWeb.Endpoint do
 
   plug Plug.Static,
     at: "/",
-    from: :caltar,
+    from: :daily_growl,
     gzip: false,
-    only: CaltarWeb.static_paths()
+    only: DailyGrowlWeb.static_paths()
 
   if code_reloading? do
     plug Phoenix.CodeReloader
-    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :caltar
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :daily_growl
   end
 
   plug Plug.RequestId
@@ -33,5 +33,5 @@ defmodule CaltarWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug CaltarWeb.Router
+  plug DailyGrowlWeb.Router
 end

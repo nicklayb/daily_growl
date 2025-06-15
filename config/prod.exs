@@ -1,7 +1,7 @@
 import Config
 
-config :caltar, CaltarWeb.Endpoint, cache_static_manifest: "priv/static/cache_manifest.json"
+config :daily_growl, DailyGrowlWeb.Endpoint, cache_static_manifest: "priv/static/cache_manifest.json"
 
 config :logger, level: :info
 
-config :caltar, CaltarWeb.Endpoint, server: true
+config :daily_growl, DailyGrowlWeb.Endpoint, server: true
