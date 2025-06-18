@@ -34,6 +34,7 @@ defmodule DailyGrowl.MixProject do
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
       {:gettext, "~> 0.26"},
       {:jason, "~> 1.2"},
+      {:mdex, "~> 0.7.0"},
       {:phoenix, "~> 1.7.19"},
       {:phoenix_ecto, "~> 4.5"},
       {:phoenix_live_view, "~> 1.0.4"},

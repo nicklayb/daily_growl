@@ -1,5 +1,5 @@
 defmodule DailyGrowl.Journals.DocumentBody do
-  use Ecto.Schema
+  use DailyGrowl, {:schema, as: :document_body}
 
   alias DailyGrowl.Journals.Document
   alias DailyGrowl.Journals.DocumentBody
@@ -11,8 +11,9 @@ defmodule DailyGrowl.Journals.DocumentBody do
     belongs_to(:document, Document)
   end
 
-  @required ~w(content document_id)a
-  @castable @required
+  @required ~w(document_id)a
+  @optional ~w(draft_content content)a
+  @castable @required ++ @optional
 
   def changeset(%DocumentBody{} = document_body \\ %DocumentBody{}, params) do
     document_body

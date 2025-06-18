@@ -1,5 +1,5 @@
 defmodule DailyGrowl.Journals.DocumentReference do
-  use Ecto.Schema
+  use DailyGrowl, {:schema, as: :document_reference}
 
   alias DailyGrowl.Journals.Document
   alias DailyGrowl.Journals.DocumentReference

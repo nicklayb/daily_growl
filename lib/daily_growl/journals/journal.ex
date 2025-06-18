@@ -1,5 +1,5 @@
 defmodule DailyGrowl.Journals.Journal do
-  use Ecto.Schema
+  use DailyGrowl, {:schema, as: :journal}
 
   alias DailyGrowl.Journals.Document
   alias DailyGrowl.Journals.Journal

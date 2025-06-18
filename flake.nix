@@ -16,6 +16,7 @@
             buildInputs = with pkgs; [ 
               elixir
               erlang_26
+              nodejs_22
               direnv
               inotify-tools
               just

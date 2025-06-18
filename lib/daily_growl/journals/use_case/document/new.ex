@@ -1,12 +1,19 @@
 defmodule DailyGrowl.Journals.UseCase.Document.New do
-  alias DailyGrowl.Journals.Document
   use Box.UseCase
+  alias DailyGrowl.Journals.DocumentBody
+  alias DailyGrowl.Journals.Document
 
   @impl Box.UseCase
   def run(%Ecto.Multi{} = multi, params, _) do
-    Ecto.Multi.insert(multi, :document, Document.changeset(params))
+    multi
+    |> Ecto.Multi.insert(:document, Document.changeset(params))
+    |> Ecto.Multi.insert(:body, fn %{document: document} ->
+      DocumentBody.changeset(%{document_id: document.id, content: "", draft_content: ""})
+    end)
   end
 
   @impl Box.UseCase
-  def return(%{document: document}, _), do: document
+  def return(%{document: document, body: body}, _) do
+    %Document{document | body: body}
+  end
 end

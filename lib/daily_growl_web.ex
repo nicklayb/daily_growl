@@ -57,7 +57,7 @@ defmodule DailyGrowlWeb do
 
   def live_view do
     quote do
-      use Phoenix.LiveView
+      use Phoenix.LiveView, layout: {DailyGrowlWeb.Components.Layouts, :app}
       unquote(view_helpers())
     end
   end

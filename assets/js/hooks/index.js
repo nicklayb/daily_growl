@@ -1,1 +1,5 @@
-export default {}
+import Editor from "./Editor.js"
+
+export default {
+  Editor
+}

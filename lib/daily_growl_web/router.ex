@@ -15,6 +15,6 @@ defmodule DailyGrowlWeb.Router do
 
   scope("/", DailyGrowlWeb) do
     pipe_through([:browser])
-    live("/", Main.Live)
+    live("/", Main.Live, container: {:div, class: "h-full"})
   end
 end

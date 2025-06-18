@@ -1,7 +1,8 @@
 defmodule DailyGrowl.Journals.Document do
-  use Ecto.Schema
+  use DailyGrowl, {:schema, as: :document}
 
   alias DailyGrowl.Journals.Document
+  alias DailyGrowl.Journals.DocumentBody
   alias DailyGrowl.Journals.Journal
 
   schema("documents") do
@@ -9,11 +10,13 @@ defmodule DailyGrowl.Journals.Document do
     field(:document_date, :naive_datetime)
 
     belongs_to(:journal, Journal)
+    has_one(:body, DocumentBody)
   end
 
   @required ~w(name journal_id document_date)a
   @castable @required
 
+  @spec changeset(t(), map()) :: Ecto.Changeset.t()
   def changeset(%Document{} = document \\ %Document{}, params) do
     document
     |> Ecto.Changeset.cast(params, @castable)

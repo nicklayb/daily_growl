@@ -11,6 +11,14 @@ config :daily_growl, DailyGrowlWeb.Endpoint,
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:daily_growl, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:daily_growl, ~w(--watch)]}
+  ],
+  live_reload: [
+    patterns: [
+      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"priv/gettext/.*(po)$",
+      ~r"lib/daily_growl/.*",
+      ~r"lib/daily_growl_web/.*"
+    ]
   ]
 
 config :logger, :console, format: "[$level] $message\n"

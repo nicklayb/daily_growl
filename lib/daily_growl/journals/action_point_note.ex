@@ -1,5 +1,5 @@
 defmodule DailyGrowl.Journals.ActionPointNote do
-  use Ecto.Schema
+  use DailyGrowl, {:schema, as: :action_point_note}
 
   alias DailyGrowl.Journals.ActionPoint
   alias DailyGrowl.Journals.ActionPointNote

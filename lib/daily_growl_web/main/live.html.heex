@@ -1,3 +1,22 @@
-
-Current temperature: {@temperature}°F
-<button phx-click="inc_temperature">+</button>
+<div class="flex flex-1 flex-col overflow-hidden">
+  <div class="flex flex-row h-full">
+    <div class="flex-1 overflow-y-auto">
+      <div
+        id="editor"
+        phx-hook="Editor"
+        data-document-value={Jason.encode!(@document.body.content)}
+        phx-update="ignore"
+      >
+      </div>
+    </div>
+    <div class={
+      Box.Html.class("flex-1 markdown-body p-4 overflow-y-auto border-t-4", [
+        {@save_state == :waiting, "border-t-yellow-400"},
+        {@save_state == :none, "border-t-gray-400"},
+        {@save_state == :saved, "border-t-green-600"}
+      ])
+    }>
+      {Phoenix.HTML.raw(@markdown_html)}
+    </div>
+  </div>
+</div>
